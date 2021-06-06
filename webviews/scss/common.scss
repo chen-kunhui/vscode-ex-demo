@@ -1,0 +1,18 @@
+// vscode 图标集 https://code.visualstudio.com/api/references/icons-in-labels
+// <i class="codicon codicon-<default codicon ID>"></i>
+//e.g. <i class="codicon codicon-loading codicon-spin"></i>
+//e.g. <i class="codicon codicon-activate-breakpoints"></i>
+@import 'vscode-codicons/dist/codicon.css';
+
+// fontawesome 图标集 http://www.fontawesome.com.cn/faicons/
+@import 'font-awesome/css/font-awesome.min.css';
+
+// element-plus 主题
+@import 'element-plus/lib/theme-chalk/index.css';
+@import './vs-el/index.scss';
+
+// 让所有 vscode 图标加上 codicon-spin class 后实现旋转效果
+.codicon-spin {
+    -webkit-animation: fa-spin 2s infinite linear;
+    animation: fa-spin 2s infinite linear;
+}
