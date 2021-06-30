@@ -14,10 +14,27 @@
 	],
 	"main": "./dist/extension.js",
 	"contributes": {
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "vs-extension-demo",
+					"title": "VS Extension Demo",
+					"icon": "webviews/svgs/chen.svg"
+				}
+			]
+		},
+		"views": {
+			"vs-extension-demo": [
+				{
+					"id": "vs-extension-demo.menu",
+					"name": "VS Extension Demo Menu"
+				}
+			]
+		},
 		"commands": [
 			{
-				"command": "ckh.helloWorld",
-				"title": "Hello World"
+				"command": "vs-extension-demo.vue-demo",
+				"title": "Vue demo"
 			}
 		]
 	},

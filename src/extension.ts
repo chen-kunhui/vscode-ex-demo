@@ -1,22 +1,11 @@
-import * as vscode from 'vscode';
-import { VueDemo } from './webviewControllers/vueDemo';
+import { ExtensionContext, window } from 'vscode';
+import registerCommands from './commands/registerCommands';
+import { MyTreeDataProvider } from './providers/MyTreeDataProvider';
 
-export function activate(context: vscode.ExtensionContext) {
+export function activate(context: ExtensionContext) {
 	console.log('Congratulations, your extension "ckh" is now active!');
-	let output = vscode.window.createOutputChannel("ckh");
-	try {
-		throw {s: 44, message: "xxx"};
-	} catch (error) {
-		output.append(`=> ${error}\n`);
-	}
-	output.appendLine("=====================test");
-	output.appendLine(context.asAbsolutePath("aa/bb"));
-	let disposable = vscode.commands.registerCommand('ckh.helloWorld', () => {
-		vscode.window.showInformationMessage('Hello World from demo!');
-		new VueDemo(context.extensionUri);
-	});
-
-	context.subscriptions.push(disposable);
+	registerCommands(context);
+	window.registerTreeDataProvider('vs-extension-demo.menu', new MyTreeDataProvider());
 }
 
 // this method is called when your extension is deactivated

@@ -20,10 +20,10 @@
       label="地址">
     </el-table-column>
   </el-table>
-
+  <ckh />
 </template>
-
 <script>
+  import ckh from "./ckh.vue"
   export default {
     data() {
       return {
@@ -45,6 +45,15 @@
           address: '上海市普陀区金沙江路 1516 弄'
         }]
       }
+    },
+    created(){
+        console.log("=====created======================", this.$vscode)
+    },
+    mounted(){
+        console.log("=====mounted======================", this.$vscode)
+    },
+    components: {
+      ckh
     }
   }
 </script>
