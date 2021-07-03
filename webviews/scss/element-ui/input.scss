@@ -1,0 +1,31 @@
+.el-input__inner {
+    background-color: var(--vscode-input-background);
+    border-color: var(--vscode-input-border);
+    color: var(--vscode-input-foreground);
+
+    &::placeholder {
+        color: var(--vscode-input-placeholderForeground);
+    }
+}
+
+.el-input.is-active .el-input__inner, .el-input__inner:focus {
+    border-color: var(--vscode-focusBorder);
+}
+
+.el-input__inner:hover {
+    border-color: var(--vscode-focusBorder);
+}
+
+.el-input-group__append, .el-input-group__prepend {
+    background-color: var(--vscode-editorWidget-background);
+    color: var(--vscode-editorWidget-foreground);
+    border-color: var(--vscode-input-border);
+}
+
+.input-with-select .el-input-group__prepend {
+    background-color: var(--vscode-editorWidget-background);
+}
+
+.el-select .el-input {
+    width: 130px;
+}

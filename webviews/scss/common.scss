@@ -9,7 +9,8 @@
 
 // element-plus 主题
 @import 'element-plus/lib/theme-chalk/index.css';
-@import './vs-el/index.scss';
+
+@import './element-ui/index';
 
 // 让所有 vscode 图标加上 codicon-spin class 后实现旋转效果
 .codicon-spin {

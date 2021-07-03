@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import ElementPlus from 'element-plus';
-import app from '../vue/vueDemo.vue'
+import app from '../vue/vueDemo'
 
 
 (()=>{

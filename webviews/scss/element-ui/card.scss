@@ -1,0 +1,16 @@
+.box-card {
+    border-color: var(--vscode-editorWidget-border);
+    background-color: var(--vscode-editorWidget-background);
+    color: var(--vscode-editorWidget-foreground);
+}
+
+.el-card.is-always-shadow, .el-card.is-hover-shadow:focus, .el-card.is-hover-shadow:hover {
+    box-shadow: 0 2px 12px 0 var(--vscode-widget-shadow);
+    border-color: rgb(0 0 0 / 0);
+}
+
+.vscode-high-contrast {
+    .el-card.is-always-shadow, .el-card.is-hover-shadow:focus, .el-card.is-hover-shadow:hover {
+        box-shadow: 0 2px 12px 0 var(--vscode-editorWidget-border);
+    }
+}

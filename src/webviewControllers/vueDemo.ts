@@ -21,8 +21,6 @@ export class VueDemo {
         const commoncss = panel.webview.asWebviewUri(vscode.Uri.joinPath(extensionUri, 'dist', 'webview', 'common.css'));
         const pagejs = panel.webview.asWebviewUri(vscode.Uri.joinPath(extensionUri, 'dist', 'webview', 'vueDemo.js'));
         const pagecss = panel.webview.asWebviewUri(vscode.Uri.joinPath(extensionUri, 'dist', 'webview', 'vueDemo.css'));
-		// const codiconsUri = panel.webview.asWebviewUri(vscode.Uri.joinPath(extensionUri, 'node_modules', 'vscode-codicons', 'dist', 'codicon.css'));
-		// const codiconsFontUri = panel.webview.asWebviewUri(vscode.Uri.joinPath(extensionUri, 'node_modules', 'vscode-codicons', 'dist', 'codicon.ttf'));
         vscode.window.showInformationMessage(panel.webview.cspSource);
 		panel.webview.html = `
         <!DOCTYPE html>

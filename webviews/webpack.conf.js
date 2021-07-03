@@ -15,6 +15,9 @@ module.exports = (env = {}) => ({
         path: path.resolve(root, './dist/webview'),
         filename: '[name].js',
     },
+    resolve: {
+        extensions: ['.js', '.css', '.vue', 'scss']
+    },
     module: {
         rules: [
         {
