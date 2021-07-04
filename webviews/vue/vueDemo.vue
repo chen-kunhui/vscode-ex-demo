@@ -5,7 +5,7 @@
 </template>
 <script>
 import btnDemo from "./elementDemo/btnDemo";
-import comment from "./comment";
+import comment from "./comments/comment";
 export default {
 	components: {
 		btnDemo,

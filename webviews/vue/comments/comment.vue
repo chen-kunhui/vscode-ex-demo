@@ -1,5 +1,9 @@
 <style lang="scss" scoped>
     .nx-new-comment-container {
+        $input-height: 200px;
+        $input-margin: 10px 0px;
+        $input-padding: 5px 15px;
+
         border: 1px solid var(--vscode-editorWidget-border);
         background-color: var(--vscode-editorWidget-background);
         color: var(--vscode-editorWidget-foreground);
@@ -7,18 +11,27 @@
         padding: 5px 5px;
         margin: 10px 0px;
 
+        .preview-container {
+            background-color: var(--vscode-editorWidget-background);
+            color: var(--vscode-editorWidget-foreground);
+            height: $input-height;
+            margin: $input-margin;
+            padding: $input-padding;
+            overflow-y: auto;
+        }
         .comment-textarea {
             font-family: var(--vscode-editor-font-family);
             font-size: var(--vscode-editor-font-size);
             font-weight: var(--vscode-editor-font-weight);
-            margin: 10px 0px;
+            margin: $input-margin;
 
             display: block;
             resize: none;
-            padding: 5px 15px;
+            padding: $input-padding;
             line-height: 1.5;
             box-sizing: border-box;
             width: 100%;
+            height: $input-height;
             border-radius: 4px;
             transition: border-color .2s cubic-bezier(.645,.045,.355,1);
 
@@ -70,9 +83,10 @@
 <template>
     <div class="nx-new-comment-container">
         <div class="comment-header">
-            <toolbar />
+            <toolbar @togglePreviewMd="togglePreviewMd" />
         </div>
-        <textarea rows="10" class="comment-textarea"></textarea>
+        <textarea v-model="text" v-show="!isPreview" class="comment-textarea"></textarea>
+        <div class="preview-container" v-show="isPreview" v-html="mdHtml"></div>
         <div class="comment-footer">
             <button class="cancel" type="button"><span>取消</span></button>
             <button class="submit" type="button"><span>提交</span></button>
@@ -80,8 +94,22 @@
     </div>
 </template>
 <script>
-    import toolbar from "./comments/toolbar"
+    import toolbar from "./toolbar";
     export default {
+        data() {
+            return {
+                isPreview: false,
+                text: '',
+                mdHtml: ''
+
+            }
+        },
+        methods: {
+            togglePreviewMd(val) {
+                this.isPreview = val;
+                this.mdHtml = this.$markdownRender.render(this.text);
+            }
+        },
         components: {
             toolbar
         }
