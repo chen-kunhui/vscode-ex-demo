@@ -1,6 +1,6 @@
 .el-input__inner {
     background-color: var(--vscode-input-background);
-    border-color: var(--vscode-input-border);
+    border: 1px solid var(--vscode-input-border);
     color: var(--vscode-input-foreground);
 
     &::placeholder {
@@ -9,23 +9,58 @@
 }
 
 .el-input.is-active .el-input__inner, .el-input__inner:focus {
-    border-color: var(--vscode-focusBorder);
+    border: 1px solid var(--vscode-focusBorder);
 }
 
 .el-input__inner:hover {
-    border-color: var(--vscode-focusBorder);
+    border: 1px solid var(--vscode-focusBorder);
 }
 
 .el-input-group__append, .el-input-group__prepend {
     background-color: var(--vscode-editorWidget-background);
     color: var(--vscode-editorWidget-foreground);
-    border-color: var(--vscode-input-border);
+    border: 1px solid var(--vscode-input-border);
 }
 
 .input-with-select .el-input-group__prepend {
     background-color: var(--vscode-editorWidget-background);
 }
 
-.el-select .el-input {
-    width: 130px;
+.el-autocomplete__popper.el-popper[role=tooltip] {
+    background: var(--vscode-dropdown-background);
+    border: 1px solid var(--vscode-dropdown-border);
+    box-shadow: 0 2px 12px 0 var(--vscode-widget-shadow);
+}
+
+.el-autocomplete__popper.el-popper[role=tooltip] .el-popper__arrow::before {
+    border: 1px solid var(--vscode-dropdown-border);
+}
+
+.el-autocomplete-suggestion li {
+    color: var(--vscode-dropdown-foreground);
+}
+
+.el-autocomplete-suggestion li.highlighted, .el-autocomplete-suggestion li:hover {
+    background-color: var(--vscode-list-hoverBackground);
+    color: var(--vscode-list-hoverForeground);
+}
+
+.vscode-high-contrast {
+    .el-autocomplete-suggestion li.highlighted, .el-autocomplete-suggestion li:hover {
+        border: 1px dashed var(--vscode-list-focusOutline);
+    }
+}
+
+.el-textarea__inner {
+    background-color: var(--vscode-input-background);
+    border: 1px solid var(--vscode-input-border);
+    color: var(--vscode-input-foreground);
+
+    &::placeholder {
+        color: var(--vscode-input-placeholderForeground);
+    }
+
+    &:focus {
+        border: 1px solid var(--vscode-focusBorder);
+    }
 }
