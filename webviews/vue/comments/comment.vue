@@ -83,9 +83,9 @@
 <template>
     <div class="nx-new-comment-container">
         <div class="comment-header">
-            <toolbar @togglePreviewMd="togglePreviewMd" />
+            <toolbar @togglePreviewMd="togglePreviewMd" @addMdSyntax="addMdSyntax"/>
         </div>
-        <textarea v-model="text" v-show="!isPreview" class="comment-textarea"></textarea>
+        <textarea ref="textarea" v-model="text" v-show="!isPreview" class="comment-textarea"></textarea>
         <div class="preview-container" v-show="isPreview" v-html="mdHtml"></div>
         <div class="comment-footer">
             <button class="cancel" type="button"><span>取消</span></button>
@@ -95,6 +95,7 @@
 </template>
 <script>
     import toolbar from "./toolbar";
+    import { addMarkdownSyntax } from "../../ts/textHandler";
     export default {
         data() {
             return {
@@ -108,6 +109,11 @@
             togglePreviewMd(val) {
                 this.isPreview = val;
                 this.mdHtml = this.$markdownRender.render(this.text);
+            },
+            addMdSyntax(action) {
+                let target = this.$el.getElementsByTagName('textarea')[0];
+                addMarkdownSyntax(target, action);
+                this.text = target.value;
             }
         },
         components: {
