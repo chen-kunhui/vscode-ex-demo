@@ -1,5 +1,6 @@
 
-import { commands, ExtensionContext, ProgressLocation, window } from "vscode";
+import { commands, ExtensionContext, ProgressLocation, Uri, window } from "vscode";
+import * as crypto from 'crypto';
 
 export default  function progressSample(context: ExtensionContext){
     let disposable = commands.registerCommand('vs-extension-demo.progress-sample', async () => {

@@ -43,10 +43,22 @@ class MyTreeItem extends TreeItem {
 
 const menus: MyTreeItem[] = [
 	new MyTreeItem(
-		'Demo',
+		'el-demo',
 		{children: [
-			new MyTreeItem('vue-demo', {command: {title: 'vue demo', command: 'vs-extension-demo.vue-demo'}}),
-			new MyTreeItem('progress sample', {command: {title: 'progress sample', command: 'vs-extension-demo.progress-sample'}})
+			new MyTreeItem('git-diff', {command: {title: '', command: 'vs-extension-demo.webview-demo', arguments: ['git-diff']}}),
+			new MyTreeItem('el-input', {command: {title: '', command: 'vs-extension-demo.webview-demo', arguments: ['el-input']}}),
 		]}
 	),
+	new MyTreeItem(
+		'vs-demo',
+		{children: [
+			new MyTreeItem('进度条', {command: {title: '', command: 'vs-extension-demo.progress-sample'}})
+		]}
+	),
+	new MyTreeItem(
+		'custome-demo',
+		{children: [
+			new MyTreeItem('demo', {command: {title: '', command: 'vs-extension-demo.demo'}})
+		]}
+	)
 ]

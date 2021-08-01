@@ -1,9 +1,9 @@
 import { commands, ExtensionContext } from "vscode";
-import { VueDemo } from "../webviewControllers/vueDemo";
+import { ElementUiDemo } from "../webviewControllers/ElementUiDemo";
 
 export default function vueSample(context: ExtensionContext){
-    let disposable = commands.registerCommand('vs-extension-demo.vue-demo', () => {
-		new VueDemo(context.extensionUri);
+    let disposable = commands.registerCommand('vs-extension-demo.webview-demo', (js: string) => {
+		new ElementUiDemo(context.extensionUri, js);
 	});
     context.subscriptions.push(disposable);
 }
