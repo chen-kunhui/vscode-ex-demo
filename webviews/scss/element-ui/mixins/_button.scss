@@ -1,0 +1,81 @@
+@import "../common/var";
+@mixin button-plain($color) {
+  color: $color;
+  background: mix(#FFFFFF, $color, 90%);
+  border-color: mix(#FFFFFF, $color, 60%);
+
+  &:hover,
+  &:focus {
+    background: $color;
+    border-color: $color;
+    color: #FFFFFF;
+  }
+
+  &:active {
+    background: mix(#000000, $color, 10%);
+    border-color: mix(#000000, $color, 10%);
+    color: #FFFFFF;
+    outline: none;
+  }
+
+  &.is-disabled {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: mix(#FFFFFF, $color, 40%);
+      background-color: mix(#FFFFFF, $color, 90%);
+      border-color: mix(#FFFFFF, $color, 80%);
+    }
+  }
+}
+
+@mixin button-variant($color, $background-color, $border-color) {
+  color: $color;
+  background-color: $background-color;
+  border-color: $border-color;
+
+  &:hover,
+  &:focus {
+    background: mix(#FFFFFF, $background-color, 20%);
+    border-color: mix(#FFFFFF, $border-color, 20%);
+    color: $color;
+  }
+  
+  &:active {
+    background: mix(#000000, $background-color, 10%);
+    border-color: mix(#000000, $border-color, 10%);
+    color: $color;
+    outline: none;
+  }
+
+  &.is-active {
+    background: mix(#000000, $background-color, 10%);
+    border-color: mix(#000000, $border-color, 10%);
+    color: $color;
+  }
+
+  &.is-disabled {
+    &,
+    &:hover,
+    &:focus,
+    &:active {
+      color: #FFFFFF;
+      background-color: mix($background-color, #FFFFFF);
+      border-color: mix($border-color, #FFFFFF);
+    }
+  }
+
+  &.is-plain {
+    @include button-plain($background-color);
+  }
+}
+
+@mixin button-size($padding-vertical, $padding-horizontal, $font-size, $border-radius) {
+  padding: $padding-vertical $padding-horizontal;
+  font-size: $font-size;
+  border-radius: $border-radius;
+  &.is-round {
+    padding: $padding-vertical $padding-horizontal;
+  }
+}

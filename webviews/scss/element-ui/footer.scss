@@ -1,0 +1,6 @@
+@import "mixins/mixins";
+@include b(footer) {
+    padding: 20px;
+    box-sizing: border-box;
+    flex-shrink: 0;
+}

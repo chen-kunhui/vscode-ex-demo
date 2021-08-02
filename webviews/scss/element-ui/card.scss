@@ -1,16 +1,31 @@
-.box-card {
-    border-color: var(--vscode-editorWidget-border);
+@import "mixins/mixins";
+$--card-border-radius: 4px;
+$--card-padding: 20px !default;
+@include b(card) {
+    border-radius: $--card-border-radius;
+    border: 1px solid $vscode-border-color;
+    // background-color: $transparent-color;
     background-color: var(--vscode-editorWidget-background);
+    overflow: hidden;
     color: var(--vscode-editorWidget-foreground);
-}
-
-.el-card.is-always-shadow, .el-card.is-hover-shadow:focus, .el-card.is-hover-shadow:hover {
-    box-shadow: 0 2px 12px 0 var(--vscode-widget-shadow);
-    border-color: rgb(0 0 0 / 0);
-}
-
-.vscode-high-contrast {
-    .el-card.is-always-shadow, .el-card.is-hover-shadow:focus, .el-card.is-hover-shadow:hover {
-        box-shadow: 0 2px 12px 0 var(--vscode-editorWidget-border);
+    transition: 0.3s;
+    @include when(always-shadow) {
+        box-shadow: $vscode-box-shadow;
+        border: 1px solid $transparent-color;
+    }
+    @include when(hover-shadow) {
+        &:hover,
+        &:focus {
+            box-shadow: $vscode-box-shadow;
+            border: 1px solid $transparent-color;
+        }
+    }
+    @include e(header) {
+        padding: #{$--card-padding - 2 $--card-padding};
+        border-bottom: 1px solid $vscode-border-color;
+        box-sizing: border-box;
+    }
+    @include e(body) {
+        padding: $--card-padding;
     }
 }

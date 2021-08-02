@@ -1,66 +1,321 @@
-.el-input__inner {
-    background-color: var(--vscode-input-background);
-    border: 1px solid var(--vscode-input-border);
-    color: var(--vscode-input-foreground);
-
-    &::placeholder {
-        color: var(--vscode-input-placeholderForeground);
+@import "mixins/mixins";
+$--font-size-base: 14px;
+$--input-font-color: $vscode-font-color;
+$--input-background-color: $transparent-color;
+$--input-border: 1px solid $vscode-border-color;
+$--input-placeholder-color: var(--vscode-input-placeholderForeground);
+$--input-hover-border: #409EFF;
+$--input-focus-border: #409EFF;
+$--color-danger: #F56C6C;
+$--input-height: 40px;
+$--input-icon-color: $--input-placeholder-color;
+@include b(textarea) {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    vertical-align: bottom;
+    font-size: $--font-size-base;
+    @include e(inner) {
+        display: block;
+        resize: vertical;
+        padding: 5px 15px;
+        line-height: 1.5;
+        box-sizing: border-box;
+        width: 100%;
+        font-size: inherit;
+        color: $--input-font-color;
+        background-color: $--input-background-color;
+        background-image: none;
+        border: $--input-border;
+        border-radius: 4px;
+        transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+        &::placeholder {
+            color: $--input-placeholder-color;
+        }
+        &:hover {
+            border-color: $--input-hover-border;
+        }
+        &:focus {
+            outline: none;
+            border-color: $--input-focus-border;
+        }
+    }
+    & .el-input__count {
+        color: $--input-placeholder-color;
+        background: $--input-background-color;
+        position: absolute;
+        font-size: 12px;
+        bottom: 5px;
+        right: 10px;
+    }
+    @include when(disabled) {
+        .el-textarea__inner {
+            background-color: $--input-background-color;
+            border-color: $vscode-border-color;
+            color: $--input-font-color;
+            cursor: not-allowed;
+            &::placeholder {
+                color: $--input-placeholder-color;
+            }
+        }
+    }
+    @include when(exceed) {
+        .el-textarea__inner {
+            border-color: $--color-danger;
+        }
+        .el-input__count {
+            color: $--color-danger;
+        }
     }
 }
 
-.el-input.is-active .el-input__inner, .el-input__inner:focus {
-    border: 1px solid var(--vscode-focusBorder);
-}
-
-.el-input__inner:hover {
-    border: 1px solid var(--vscode-focusBorder);
-}
-
-.el-input-group__append, .el-input-group__prepend {
-    background-color: var(--vscode-editorWidget-background);
-    color: var(--vscode-editorWidget-foreground);
-    border: 1px solid var(--vscode-input-border);
-}
-
-.input-with-select .el-input-group__prepend {
-    background-color: var(--vscode-editorWidget-background);
-}
-
-.el-autocomplete__popper.el-popper[role=tooltip] {
-    background: var(--vscode-dropdown-background);
-    border: 1px solid var(--vscode-dropdown-border);
-    box-shadow: 0 2px 12px 0 var(--vscode-widget-shadow);
-}
-
-.el-autocomplete__popper.el-popper[role=tooltip] .el-popper__arrow::before {
-    border: 1px solid var(--vscode-dropdown-border);
-}
-
-.el-autocomplete-suggestion li {
-    color: var(--vscode-dropdown-foreground);
-}
-
-.el-autocomplete-suggestion li.highlighted, .el-autocomplete-suggestion li:hover {
-    background-color: var(--vscode-list-hoverBackground);
-    color: var(--vscode-list-hoverForeground);
-}
-
-.vscode-high-contrast {
-    .el-autocomplete-suggestion li.highlighted, .el-autocomplete-suggestion li:hover {
-        border: 1px dashed var(--vscode-list-focusOutline);
+@include b(input) {
+    position: relative;
+    font-size: $--font-size-base;
+    display: inline-block;
+    width: 100%;
+    @include scroll-bar;
+    & .el-input__clear {
+        color: #C0C4CC;
+        font-size: $--font-size-base;
+        cursor: pointer;
+        transition: 14px;
+        &:hover {
+            color: #909399;
+        }
+    }
+    & .el-input__count {
+        height: 100%;
+        display: inline-flex;
+        align-items: center;
+        color: $--input-placeholder-color;
+        font-size: 12px;
+        .el-input__count-inner {
+            background: $--input-background-color;
+            line-height: initial;
+            display: inline-block;
+            padding: 0 5px;
+        }
+    }
+    @include e(inner) {
+        -webkit-appearance: none;
+        background-color: $--input-background-color;
+        background-image: none;
+        border-radius: 4px;
+        border: $--input-border;
+        box-sizing: border-box;
+        color: $--input-font-color;
+        display: inline-block;
+        font-size: inherit;
+        height: $--input-height;
+        line-height: $--input-height;
+        outline: none;
+        padding: 0 15px;
+        transition: border-color .2s cubic-bezier(.645, .045, .355, 1);
+        width: 100%;
+        &::-ms-reveal {
+            display: none;
+        }
+        &::placeholder {
+            color: $--input-placeholder-color;
+        }
+        &:hover {
+            border-color: $--input-hover-border;
+        }
+        &:focus {
+            outline: none;
+            border-color: $--input-focus-border;
+        }
+    }
+    @include e(suffix) {
+        position: absolute;
+        height: 100%;
+        right: 5px;
+        top: 0;
+        text-align: center;
+        color: $--input-icon-color;
+        transition: all .3s;
+        pointer-events: none;
+    }
+    @include e(suffix-inner) {
+        pointer-events: all;
+    }
+    @include e(prefix) {
+        position: absolute;
+        height: 100%;
+        left: 5px;
+        top: 0;
+        text-align: center;
+        color: $--input-icon-color;
+        transition: all .3s;
+    }
+    @include e(icon) {
+        height: 100%;
+        width: 25px;
+        text-align: center;
+        transition: all .3s;
+        line-height: $--input-height;
+        &:after {
+            content: '';
+            height: 100%;
+            width: 0;
+            display: inline-block;
+            vertical-align: middle;
+        }
+    }
+    @include e(validateIcon) {
+        pointer-events: none;
+    }
+    @include when(active) {
+        .el-input__inner {
+            outline: none;
+            border-color: $--input-focus-border;
+        }
+    }
+    @include when(disabled) {
+        .el-input__inner {
+            background-color: $--input-background-color;
+            border-color: $vscode-border-color;
+            color: $--input-font-color;
+            cursor: not-allowed;
+            &::placeholder {
+                color: $--input-placeholder-color;
+            }
+        }
+        .el-input__icon {
+            cursor: not-allowed;
+        }
+    }
+    @include when(exceed) {
+        .el-input__inner {
+            border-color: $--color-danger;
+        }
+        .el-input__suffix {
+            .el-input__count {
+                color: $--color-danger;
+            }
+        }
+    }
+    @include m(suffix) {
+        .el-input__inner {
+            padding-right: 30px;
+        }
+    }
+    @include m(prefix) {
+        .el-input__inner {
+            padding-left: 30px;
+        }
+    }
+    @include m(medium) {
+        font-size: 14px;
+        @include e(inner) {
+            height: 36px;
+            line-height: 36px;
+        }
+        .el-input__icon {
+            line-height: 36px;
+        }
+    }
+    @include m(small) {
+        font-size: 13px;
+        @include e(inner) {
+            height: 32px;
+            line-height: 32px;
+        }
+        .el-input__icon {
+            line-height: 32px;
+        }
+    }
+    @include m(mini) {
+        font-size: 12px;
+        @include e(inner) {
+            height: 28px;
+            line-height: 28px;
+        }
+        .el-input__icon {
+            line-height: 28px;
+        }
     }
 }
 
-.el-textarea__inner {
-    background-color: var(--vscode-input-background);
-    border: 1px solid var(--vscode-input-border);
-    color: var(--vscode-input-foreground);
-
-    &::placeholder {
-        color: var(--vscode-input-placeholderForeground);
+@include b(input-group) {
+    line-height: normal;
+    display: inline-table;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    >.el-input__inner {
+        vertical-align: middle;
+        display: table-cell;
     }
-
-    &:focus {
-        border: 1px solid var(--vscode-focusBorder);
+    @include e((append, prepend)) {
+        background-color: $--input-background-color;
+        color: $--input-font-color;
+        vertical-align: middle;
+        display: table-cell;
+        position: relative;
+        border: $--input-border;
+        border-radius: 4px;
+        padding: 0 20px;
+        width: 1px;
+        white-space: nowrap;
+        &:focus {
+            outline: none;
+        }
+        .el-select,
+        .el-button {
+            display: inline-block;
+            margin: -10px -20px;
+        }
+        button.el-button,
+        div.el-select .el-input__inner,
+        div.el-select:hover .el-input__inner {
+            border-color: transparent;
+            background-color: transparent;
+            color: inherit;
+            border-top: 0;
+            border-bottom: 0;
+        }
+        .el-button,
+        .el-input {
+            font-size: inherit;
+        }
     }
+    @include e(prepend) {
+        border-right: 0;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    @include e(append) {
+        border-left: 0;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+    @include m(prepend) {
+        .el-input__inner {
+            border-top-left-radius: 0;
+            border-bottom-left-radius: 0;
+        }
+        .el-select .el-input.is-focus .el-input__inner {
+            border-color: transparent;
+        }
+    }
+    @include m(append) {
+        .el-input__inner {
+            border-top-right-radius: 0;
+            border-bottom-right-radius: 0;
+        }
+        .el-select .el-input.is-focus .el-input__inner {
+            border-color: transparent;
+        }
+    }
+}
+
+
+/** disalbe default clear on IE */
+
+.el-input__inner::-ms-clear {
+    display: none;
+    width: 0;
+    height: 0;
 }

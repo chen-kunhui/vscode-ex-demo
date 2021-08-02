@@ -1,0 +1,19 @@
+//@import "var1";
+$--fade-linear-transition: opacity 200ms linear !default;
+$--md-fade-transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1),
+opacity 300ms cubic-bezier(0.23, 1, 0.32, 1) !default;
+// ======================== 通用颜色 ===============================
+$transparent-color: rgb(0 0 0 / 0); // 透明色，用于设置背景
+$vscode-border-color: var(--vscode-editorWidget-border); // 用于边框，分割线
+// =========================== 阴影 ================================
+// $vscode-box-shadow-color: rgba(0, 0, 0, 0.36);
+$vscode-box-shadow-color: var(--vscode-scrollbar-shadow);
+$vscode-high-contrast-color: var(--vscode-editorWidget-border);
+// 边框的阴影
+$vscode-box-shadow: 0 4px 4px 0 $vscode-box-shadow-color;
+// 高对比主题下边框的阴影
+// $vscode-high-contrast: 0px 1px 5px 0.5px $vscode-high-contrast-color;
+$vscode-high-contrast: 0 4px 4px 0 $vscode-box-shadow-color;
+// =================================================================
+$--font-size-base: 14px !default;
+$vscode-font-color: var(--vscode-foreground);

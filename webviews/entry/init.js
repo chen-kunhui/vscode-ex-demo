@@ -1,6 +1,5 @@
-import { createApp } from 'vue'
+import { createApp } from 'vue';
 import ElementPlus from 'element-plus';
-import app from '../vue/vueDemo'
 
 // markdown-it 插件 https://www.npmjs.com/search?q=keywords:markdown-it-plugin
 // markdown 渲染器 https://github.com/markdown-it/markdown-it
@@ -8,11 +7,10 @@ import MarkdownIt from 'markdown-it';
 // [ ], - [ ], * [ ]
 import markdownCheckbox from 'markdown-it-checkbox';
 // 代码高亮
-import highlightJs from 'highlight.js'
-import '../scss/highlight.js/vscode.scss'
+import highlightJs from 'highlight.js';
 
 
-(()=>{
+export function initVueApp(app){
     // https://markdown-it.github.io/markdown-it/#Core.new
     let markdownRender = new MarkdownIt({
         // html: true, // 允许渲染 html 标签
@@ -60,4 +58,4 @@ import '../scss/highlight.js/vscode.scss'
     vueApp.config.globalProperties.$markdownRender = markdownRender;
 
     vueApp.use(ElementPlus).mount('#vue-app');
-})()
+}

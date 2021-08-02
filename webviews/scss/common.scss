@@ -8,12 +8,16 @@
 @import 'font-awesome/css/font-awesome.min.css';
 
 // element-plus 主题
-@import 'element-plus/lib/theme-chalk/index.css';
+//@import 'element-plus/lib/theme-chalk/index.css';
 
-@import './element-ui/index';
+@import './element-ui.scss';
 
 // 让所有 vscode 图标加上 codicon-spin class 后实现旋转效果
 .codicon-spin {
     -webkit-animation: fa-spin 2s infinite linear;
     animation: fa-spin 2s infinite linear;
+}
+
+body {
+    padding-top: 20px;
 }

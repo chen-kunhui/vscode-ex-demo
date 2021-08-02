@@ -1,0 +1,28 @@
+.file-diffs {
+    overflow: auto;
+    color: var(--vscode-editor-foreground);
+    background: var(--vscode-editor-background);
+    border: 1px solid var(--vscode-);
+    .hljs {
+        background: none !important;
+        padding: 0px;
+    }
+    .line-num {
+        span {
+            display: inline-block;
+            min-width: 40px;
+            padding: 0px 5px;
+            color: var(--vscode-editorLineNumber-foreground);
+        }
+    }
+    .line {
+        white-space: nowrap;
+        width: 100%;
+    }
+    .new-line {
+        background-color: var(--vscode-diffEditor-insertedTextBackground);
+    }
+    .old-line {
+        background-color: var(--vscode-diffEditor-removedTextBackground);
+    }
+}
