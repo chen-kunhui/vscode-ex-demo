@@ -58,7 +58,8 @@ const menus: MyTreeItem[] = [
 	new MyTreeItem(
 		'custome-demo',
 		{children: [
-			new MyTreeItem('demo', {command: {title: '', command: 'vs-extension-demo.demo'}})
+			new MyTreeItem('demo', {command: {title: '', command: 'vs-extension-demo.demo'}}),
+			new MyTreeItem('Two Way Tree', {command: {title: '', command: 'vs-extension-demo.twoWayTree'}})
 		]}
 	)
 ]
